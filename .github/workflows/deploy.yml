@@ -19,12 +19,11 @@ jobs:
 
       - name: Install Terraform
         run: |
-          sudo apt-get update
-          sudo apt-get install -y gnupg software-properties-common curl
-          curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
-          sudo apt-add-repository "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-          sudo apt-get update
-          sudo apt-get install terraform
+          # Baixar e instalar Terraform
+          wget https://releases.hashicorp.com/terraform/1.6.0/terraform_1.6.0_linux_amd64.zip
+          sudo apt-get install unzip
+          unzip terraform_1.6.0_linux_amd64.zip
+          sudo mv terraform /usr/local/bin/
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
