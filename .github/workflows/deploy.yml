@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+permissions:
+  id-token: write   # Permite solicitar o JWT do GitHub para autenticação com a AWS
+  contents: read    # Necessário para actions/checkout
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
